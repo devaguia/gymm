@@ -1,20 +1,52 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello SingupController!{% endblock %}
+{% block title %}Sing up{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <section class="bg-gray-200 min-h-screen flex items-center justify-center">
+        <div class="bg-gray-100 flex flex-row gap-4 rounded-2xl shadow-2xl max-w-3xl p-5">
+            <div class="sm:block hidden w-1/2">
+                <img class="rounded-2xl" src="{{ asset('images/bg-singup.jpg') }}" alt="">
+            </div>
+            <div class="sm:w-1/2 px-8 py-4">
+                <h2 class="font-bold text-2xl text-[#fc612e] flex">
+                    Register on <span class="px-2 text-black">Gymm</span>
+                    <svg class="w-7" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M48 256h416"/><rect x="384" y="128" width="32" height="256" rx="16" ry="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><rect x="96" y="128" width="32" height="256" rx="16" ry="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><rect x="32" y="192" width="16" height="128" rx="8" ry="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><rect x="464" y="192" width="16" height="128" rx="8" ry="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></svg>
+                </h2>
+                <p class="text-sm text-[#fc612e]">Create your account!</p>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+                <form class="flex flex-col gap-4 mt-4">
+                    <input type="name" class="p-2 pl-4 rounded-xl w-full outline-0" name="name" placeholder="Name">
+                    <input type="last_name" class="p-2  pl-4 rounded-xl w-full outline-0" name="firstname" placeholder="Last name">
+                    <div class="flex flex-row gap-4">
+                        <select class="p-2 w-1/2 rounded-xl w-full outline-0 bg-white text-gray-500">
+                            <option value="0">Gender</option>
+                            <option value="m">Male</option>
+                            <option value="f">Female</option>
+                        </select>
+                        <input type="number" min="0" max="90" class="p-2 w-1/2 pl-4 rounded-xl w-full outline-0" name="age" placeholder="Age">
+                    </div>
+                    <div class="flex w-full">
+                        <input type="email" class="p-2  pl-4 rounded-xl w-full outline-0" name="email" placeholder="Email">
+                    </div>
+                    <div class="relative">
+                        <input type="password" class="p-2 pl-4 rounded-xl w-full outline-0" name="password" placeholder="Password">
+                        <svg fill="gray" class="absolute w-5 top-0 right-3 translate-y-1/2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M255.66 112c-77.94 0-157.89 45.11-220.83 135.33a16 16 0 00-.27 17.77C82.92 340.8 161.8 400 255.66 400c92.84 0 173.34-59.38 221.79-135.25a16.14 16.14 0 000-17.47C428.89 172.28 347.8 112 255.66 112z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><circle cx="256" cy="256" r="80" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/></svg>
+                    </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/home/aguiar/Workspace/aguiar/php/gymm/src/Controller/SingupController.php'|file_link(0) }}">src/Controller/SingupController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/aguiar/Workspace/aguiar/php/gymm/templates/singup/index.html.twig'|file_link(0) }}">templates/singup/index.html.twig</a></code></li>
-    </ul>
-</div>
+                    <button class="bg-[#fc612e] rounded-xl text-white py-2 mt-5 w-full">Register</button>
+                </form>
+
+                <div class="mt-6 grid grid-cols-3 items-center text-gray-500">
+                    <hr class="text-gray-50">
+                    <p class="text-center text-sm">OR</p>
+                    <hr class="text-gray-50">
+                </div>
+
+                <div class="pt-6 w-full">
+                    <a class="block hover:cursor-pointer text-center px-full bg-[#292524] rounded-xl text-white py-2 w-full">Sing In</a>
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock %}
