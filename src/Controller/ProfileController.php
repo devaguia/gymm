@@ -15,4 +15,12 @@ class ProfileController extends AbstractController
             'controller_name' => 'ProfileController',
         ]);
     }
+
+    #[Route('/profile/progress', name: 'app_profile_progress', methods: ['GET'])]
+    public function renderProgressPage(): Response
+    {
+        return $this->render('profile/progress.html.twig', [
+            'controller_name' => 'ProfileController',
+        ]);
+    }
 }
