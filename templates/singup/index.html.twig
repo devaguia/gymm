@@ -3,8 +3,8 @@
 {% block title %}Sing up{% endblock %}
 
 {% block body %}
-    <section class="bg-gray-200 min-h-screen flex items-center justify-center">
-        <div class="bg-gray-100 flex flex-row gap-4 rounded-2xl shadow-2xl max-w-3xl p-5">
+    <section class="bg-gray-100 min-h-screen flex items-center justify-center">
+        <div class="bg-white flex flex-row gap-4 rounded-2xl shadow-2xl max-w-3xl p-5">
             <div class="sm:block hidden w-1/2">
                 <img class="rounded-2xl" src="{{ asset('images/bg-singup.jpg') }}" alt="">
             </div>
@@ -16,25 +16,25 @@
                 <p class="text-sm text-[#fc612e]">Create your account!</p>
 
                 <form class="flex flex-col gap-4 mt-4">
-                    <input type="name" class="p-2 pl-4 rounded-xl w-full outline-0" name="name" placeholder="Name">
-                    <input type="last_name" class="p-2  pl-4 rounded-xl w-full outline-0" name="firstname" placeholder="Last name">
+                    <input type="name" class="shadow-md border border-gray-100 p-2 pl-4 rounded-lg w-full outline-0" name="name" placeholder="Name">
+                    <input type="last_name" class="shadow-md border border-gray-100 p-2 pl-4 rounded-lg w-full outline-0" name="firstname" placeholder="Last name">
                     <div class="flex flex-row gap-4">
-                        <select class="p-2 w-1/2 rounded-xl w-full outline-0 bg-white text-gray-500">
+                        <select class="shadow-md border border-gray-100 p-2 w-1/2 rounded-lg outline-0 bg-white text-gray-500">
                             <option value="0">Gender</option>
                             <option value="m">Male</option>
                             <option value="f">Female</option>
                         </select>
-                        <input type="number" min="0" max="90" class="p-2 w-1/2 pl-4 rounded-xl w-full outline-0" name="age" placeholder="Age">
+                        <input type="number" min="0" max="90" class="p-2 w-1/2 pl-4 rounded-xl outline-0" name="age" placeholder="Age">
                     </div>
                     <div class="flex w-full">
-                        <input type="email" class="p-2  pl-4 rounded-xl w-full outline-0" name="email" placeholder="Email">
+                        <input type="email" class="shadow-md border border-gray-100 p-2 pl-4 rounded-lg w-full outline-0" name="email" placeholder="Email">
                     </div>
                     <div class="relative">
-                        <input type="password" class="p-2 pl-4 rounded-xl w-full outline-0" name="password" placeholder="Password">
+                        <input type="password" class="shadow-md border border-gray-100 p-2 pl-4 rounded-lg w-full outline-0" name="password" placeholder="Password">
                         <svg fill="gray" class="absolute w-5 top-0 right-3 translate-y-1/2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M255.66 112c-77.94 0-157.89 45.11-220.83 135.33a16 16 0 00-.27 17.77C82.92 340.8 161.8 400 255.66 400c92.84 0 173.34-59.38 221.79-135.25a16.14 16.14 0 000-17.47C428.89 172.28 347.8 112 255.66 112z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><circle cx="256" cy="256" r="80" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/></svg>
                     </div>
 
-                    <button class="bg-[#fc612e] hover:bg-[#FD7A45] shadow-lg rounded-xl text-white py-2 mt-5 w-full">Register</button>
+                    <button class="bg-[#fc612e] hover:bg-[#FD7A45] shadow-lg rounded-lg text-white py-2 mt-5 w-full">Register</button>
                 </form>
 
                 <div class="mt-6 grid grid-cols-3 items-center text-gray-500">
@@ -44,7 +44,7 @@
                 </div>
 
                 <div class="pt-6 w-full">
-                    <a href="/singin" class="block shadow-lg hover:cursor-pointer text-center px-full bg-[#292524] rounded-xl text-white py-2 w-full">Sing In</a>
+                    <a href="/singin" class="block shadow-lg hover:cursor-pointer text-center px-full bg-black hover:bg-gray-700 rounded-lg text-white py-2 w-full">Sing In</a>
                 </div>
             </div>
         </div>
