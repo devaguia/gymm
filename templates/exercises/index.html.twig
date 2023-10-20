@@ -3,18 +3,36 @@
 {% block title %}Exercises{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/home/aguiar/Workspace/aguiar/php/gymm/src/Controller/ExercisesController.php'|file_link(0) }}">src/Controller/ExercisesController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/aguiar/Workspace/aguiar/php/gymm/templates/exercises/index.html.twig'|file_link(0) }}">templates/exercises/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <div class="py-2 px-6 md:px-20 lg:px-60 bg-gray">
+        <div class="flex flex-col md:flex-row w-full">
+            <div class="w-full md:w-1/2 flex items-end mt-4">
+                <h2 class="font-bold text-2xl">Your exercises</h2>
+            </div>
+            <div class="w-full md:w-1/2 flex flex-row justify-end mt-2 md:mt-5">
+                <a class="bg-[#fc612e] shadow-lg hover:bg-[#FD7A45] block rounded-lg text-white py-2 px-4 w-full md:w-48" href="/sheets/new">+ Add new exercises</a>
+            </div>
+        </div>
+        <hr class="w-full my-4">
+        <div>
+            <div class="mt-4">
+                <div class="shadow-lg rounded-lg w-full py-2 px-4 border border-gray-100 flex flex-row text-sm">
+                    <div class="flex flex-row w-1/2 selection:bg-transparent">
+                        <span class="w-full md:w-full">Exercise Name</span>
+                    </div>
+                    <div class="w-1/2 flex justify-end">
+                        <div class="px-4 flex items-center">
+                            <a href="#" class="transition-all duration-200 filter hover:opacity-50">
+                                <img class="w-[18px]" src="{{ asset('images/icons/pen-to-square-solid.svg') }}" alt="">
+                            </a>
+                        </div>
+                        <form class="flex items-center">
+                            <button class="w-[16px] transition-all duration-200 filter hover:opacity-50">
+                                <img src="{{ asset('images/icons/trash-can-regular.svg') }}" alt="">
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
