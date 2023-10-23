@@ -10,14 +10,14 @@
         <hr class="w-full my-4">
         <div class="py-4">
             <div>
-                <input class="w-full h-10 rounded-md outline-0 pl-4 shadow-md border border-gray-100" name="name" id="name" placeholder="Sheet name" aria-label="name">
+                <input class="gymm-txt" name="name" id="name" placeholder="Sheet name" aria-label="name">
             </div>
         </div>
         <div class="py-4">
             <label class="font-bold">Sheet exercises</label>
             <div class="flex flex-row gap-4 mt-2">
                 <div class="w-full">
-                    <input class="w-full h-10 rounded-md outline-0 pl-4 shadow-md border border-gray-100 bg-white" type="search" placeholder="New exercise" aria-label="exercises">
+                    <input class="gymm-txt" type="search" placeholder="New exercise" aria-label="exercises">
                     <div class="hidden" id="exercise-list">
                         <ul class="px-2 bg-gray-50 rounded-b-m shadow-lg border border-gray-100">
                             <li class="pl-2 my-1 py-1 rounded-sm hover:bg-gray-200 hover:cursor-pointer" data-id="0">Supino Reto</li>
@@ -30,18 +30,18 @@
                 <ul class="px-2 mt-6 flex flex-col gap-2">
                     <li class="flex flex-row px-8 py-4 rounded-md bg-gray-100 justify-between">
                         <span class="text-[#fc612e]">Supino Reto</span>
-                        <img class="w-[16px] transition-all duration-200 filter hover:opacity-50 hover:cursor-pointer" src="{{ asset('images/icons/trash-can-regular.svg') }}">
+                        <img class="gymm-btn-primary" src="{{ asset('images/icons/trash-can-regular.svg') }}">
                     </li>
                 </ul>
             </div>
         </div>
         <div class="py-4">
             <div>
-                <textarea class="w-full h-32 resize-none rounded-md outline-0 pl-4 pt-4 shadow-md border border-gray-100" name="description" id=description" placeholder="Sheet Description" aria-label="description"></textarea>
+                <textarea class="gymm-textarea" name="description" id=description" placeholder="Sheet Description" aria-label="description"></textarea>
             </div>
         </div>
         <div class="float-right w-full flex justify-end">
-            <button class="bg-[#fc612e] shadow-lg hover:bg-[#FD7A45] block rounded-lg text-white py-2 px-4 w-full md:w-40 text-center">Save</button>
+            <button class="gymm-btn-primary md:w-40">Save</button>
         </div>
     </form>
 {% endblock %}

@@ -9,3 +9,19 @@
         margin: 0;
     }
 }
+
+.gymm-btn-primary {
+    @apply shadow-lg block rounded-lg text-center bg-[#fc612e] hover:bg-[#FD7A45] text-white w-full py-2 px-4;
+}
+
+.gymm-btn-secondary {
+    @apply shadow-lg block rounded-lg text-center bg-black hover:bg-gray-700 text-white w-full py-2 px-4;
+}
+
+.gymm-txt {
+    @apply w-full h-10 rounded-md outline-0 pl-4 shadow-md border border-gray-100 bg-white;
+}
+
+.gymm-textarea {
+    @apply w-full h-32 rounded-md outline-0 resize-none pl-4 shadow-md border border-gray-100 bg-white;
+}

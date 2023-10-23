@@ -14,6 +14,11 @@ class SheetsController extends AbstractController
         return $this->render('sheets/index.html.twig', []);
     }
 
+    #[Route('/sheets/view', name: 'app_view_sheets', methods: ['GET'])]
+    public function viewSheets(): Response
+    {
+        return $this->render('sheets/sheet.html.twig', []);
+    }
     #[Route('/sheets/new', name: 'app_add_sheets', methods: ['GET'])]
     public function addSheets(): Response
     {
