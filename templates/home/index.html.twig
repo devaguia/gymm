@@ -6,17 +6,17 @@
     <header>
         <nav class="border-gray-200 shadow-md dark:bg-gray-900">
             <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                <a href="/" class="flex items-center">
+                <a href="{{ path('app_home') }}" class="flex items-center">
                     <svg class="w-7 mr-1 text-[#fc612e]" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 512 512"><path fill="#fc612e" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M48 256h416"/><rect x="384" y="128" width="32" height="256" rx="16" ry="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><rect x="96" y="128" width="32" height="256" rx="16" ry="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><rect x="32" y="192" width="16" height="128" rx="8" ry="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><rect x="464" y="192" width="16" height="128" rx="8" ry="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></svg>
                     <span class="self-center text-2xl font-semibold whitespace-nowrap font-bold text-black">Gymm</span>
                 </a>
                 <div class="block w-auto" id="navbar-default">
                     <ul class="font-medium text-sm flex flex-ro p-0 border-gray-100 rounded-lg space-x-4 mt-0 border-0 bg-white dark:bg-gray-900 dark:border-gray-700">
                         <li class="pl-0">
-                            <a href="/singin" class="" aria-current="page">Login</a>
+                            <a href="{{ path('app_singin') }}" class="" aria-current="page">Login</a>
                         </li>
                         <li>
-                            <a href="/singup" class="hover:cursor-pointer text-center px-full bg-[#fc612e] hover:bg-[#FD7A45] rounded-lg text-white py-2 px-4 shadow-md">Register</a>
+                            <a href="{{ path('app_singup') }}" class="hover:cursor-pointer text-center px-full bg-[#fc612e] hover:bg-[#FD7A45] rounded-lg text-white py-2 px-4 shadow-md">Register</a>
                         </li>
                     </ul>
                 </div>
@@ -33,10 +33,10 @@
             </div>
             <div>
                 <div class="flex flex-row gap-4 md:w-1/2 mt-10">
-                    <a  class="block hover:cursor-pointer text-center px-full bg-white hover:bg-gray-50 border rounded-lg shadow-lg hover:shadow-lg text-black text-sm py-1.5 w-full" href="/singin">
+                    <a  class="block hover:cursor-pointer text-center px-full bg-white hover:bg-gray-50 border rounded-lg shadow-lg hover:shadow-lg text-black text-sm py-1.5 w-full" href="{{ path('app_singin') }}">
                         Sing In
                     </a>
-                    <a class="block hover:cursor-pointer text-center px-full bg-[#fc612e] hover:bg-[#FD7A45] rounded-lg shadow-lg hover:shadow-lg text-white text-sm  py-1.5 w-full" href="/singup">
+                    <a class="block hover:cursor-pointer text-center px-full bg-[#fc612e] hover:bg-[#FD7A45] rounded-lg shadow-lg hover:shadow-lg text-white text-sm  py-1.5 w-full" href="{{ path('app_singup') }}">
                         Register
                     </a>
                 </div>
