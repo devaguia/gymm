@@ -11,11 +11,11 @@
 }
 
 .gymm-btn-primary {
-    @apply shadow-lg block rounded-lg text-center bg-[#fc612e] hover:bg-[#FD7A45] text-white w-full py-2 px-4;
+    @apply shadow-lg block rounded-lg text-center bg-[#fc612e] hover:bg-[#FD7A45] text-white w-full py-2 px-4 selection:bg-transparent;
 }
 
 .gymm-btn-secondary {
-    @apply shadow-lg block rounded-lg text-center bg-black hover:bg-gray-700 text-white w-full py-2 px-4;
+    @apply shadow-lg block rounded-lg text-center bg-black hover:bg-gray-700 text-white w-full py-2 px-4 selection:bg-transparent;
 }
 
 .gymm-txt {
