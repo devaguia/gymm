@@ -1,4 +1,4 @@
-export class SinginIndex
+export class Singin
 {
     constructor() {
         addEventListener('DOMContentLoaded', () => {

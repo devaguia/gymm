@@ -23,5 +23,13 @@
 }
 
 .gymm-textarea {
-    @apply w-full h-32 rounded-md outline-0 resize-none pl-4 shadow-md border border-gray-100 bg-white;
+    @apply w-full h-32 rounded-md outline-0 resize-none pl-4 pt-2 shadow-md border border-gray-100 bg-white;
+}
+
+.gymm-mobile-menu {
+    @apply hidden w-auto;
+}
+
+.gymm-mobile-menu-active {
+    @apply block md:hidden w-auto;
 }

@@ -7,8 +7,16 @@
 
 // any CSS you import will output into a single css file (app.css in this case)
 import './styles/app.css';
-import {SinginIndex} from "./script/singin";
-import {SingupIndex} from "./script/singup";
+import {Singin} from "./script/singin";
+import {Singup} from "./script/singup";
+import {Admin} from "./script/admin";
+import {Profile} from "./script/profile";
+import {Exercises} from "./script/exercises";
+import {Sheets} from "./script/sheets";
 
-new SinginIndex();
-new SingupIndex();
+new Admin();
+new Singin();
+new Singup();
+new Profile();
+new Exercises();
+new Sheets();

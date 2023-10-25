@@ -1,5 +1,6 @@
 import IMask from "imask";
-export class Profile
+
+export class Exercises
 {
     constructor() {
         addEventListener('DOMContentLoaded', () => {
@@ -12,15 +13,7 @@ export class Profile
     }
 
     setWeightMask() {
-        const weight = document.querySelector('#profile-weight');
-
-        if(!weight) return;
-
-        this.setDecimalMask(weight);
-    }
-
-    setHeightMask() {
-        const height = document.querySelector('#profile-height');
+        const height = document.querySelector('#exercise-weight');
 
         if(!height) return;
 

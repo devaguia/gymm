@@ -16,11 +16,13 @@
         <div class="py-4">
             <label class="font-bold">Sheet exercises</label>
             <div class="flex flex-row gap-4 mt-2">
-                <div class="w-full">
-                    <input class="gymm-txt" type="search" placeholder="New exercise" aria-label="exercises">
+                <div class="w-full relative">
+                    <input class="gymm-txt hover:cursor-pointer" type="text" id="search-exercise" placeholder="New exercise" aria-label="exercises">
                     <div class="hidden" id="exercise-list">
-                        <ul class="px-2 bg-gray-50 rounded-b-m shadow-lg border border-gray-100">
-                            <li class="pl-2 my-1 py-1 rounded-sm hover:bg-gray-200 hover:cursor-pointer" data-id="0">Supino Reto</li>
+                        <ul class="px-2 bg-gray-50 rounded-b-m shadow-lg border border-gray-100 absolute w-full">
+                            <li class="pl-2 my-1 py-1 rounded-sm hover:bg-gray-200 hover:cursor-pointer exercise-item" data-id="0">Supino Reto</li>
+                            <li class="pl-2 my-1 py-1 rounded-sm hover:bg-gray-200 hover:cursor-pointer exercise-item" data-id="1">Teste</li>
+                            <li class="pl-2 my-1 py-1 rounded-sm hover:bg-gray-200 hover:cursor-pointer exercise-item" data-id="2">Balela</li>
                         </ul>
                     </div>
                 </div>
