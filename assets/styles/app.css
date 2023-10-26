@@ -33,3 +33,11 @@
 .gymm-mobile-menu-active {
     @apply block md:hidden w-auto;
 }
+
+.gymm-exercise-added-list {
+    @apply flex flex-row px-8 py-2 rounded-md bg-gray-100 justify-between;
+}
+
+.gymm-exercise-added-trash {
+    @apply w-[16px] transition-all duration-200 filter hover:opacity-50 flex items-center hover:cursor-pointer;
+}

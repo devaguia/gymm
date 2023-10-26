@@ -19,22 +19,17 @@
                 <div class="w-full relative">
                     <input class="gymm-txt hover:cursor-pointer" type="text" id="search-exercise" placeholder="New exercise" aria-label="exercises">
                     <div class="hidden" id="exercise-list">
-                        <ul class="px-2 bg-gray-50 rounded-b-m shadow-lg border border-gray-100 absolute w-full">
+                        <ul class="px-2 py-2 bg-gray-50 rounded-b-m shadow-lg border border-gray-100 absolute w-full">
                             <li class="pl-2 my-1 py-1 rounded-sm hover:bg-gray-200 hover:cursor-pointer exercise-item" data-id="0">Supino Reto</li>
                             <li class="pl-2 my-1 py-1 rounded-sm hover:bg-gray-200 hover:cursor-pointer exercise-item" data-id="1">Teste</li>
                             <li class="pl-2 my-1 py-1 rounded-sm hover:bg-gray-200 hover:cursor-pointer exercise-item" data-id="2">Balela</li>
                         </ul>
                     </div>
                 </div>
-                <span class="bg-[#fc612e] shadow-md hover:bg-[#FD7A45] hover:cursor-pointer block rounded-lg h-10 text-white py-2 px-4 font-bold text-center">+</span>
+                <span id="add-exercise-button" class="bg-[#fc612e] shadow-md hover:bg-[#FD7A45] hover:cursor-pointer block rounded-lg h-10 text-white py-2 px-4 font-bold text-center">+</span>
             </div>
-            <div id="exercises-selected" class="hidden w-full">
-                <ul class="px-2 mt-6 flex flex-col gap-2">
-                    <li class="flex flex-row px-8 py-4 rounded-md bg-gray-100 justify-between">
-                        <span class="text-[#fc612e]">Supino Reto</span>
-                        <img class="gymm-btn-primary" src="{{ asset('images/icons/trash-can-regular.svg') }}">
-                    </li>
-                </ul>
+            <div id="exercises-selected" class="w-full">
+                <ul class="px-2 mt-6 flex flex-col gap-2"></ul>
             </div>
         </div>
         <div class="py-4">

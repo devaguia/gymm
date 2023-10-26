@@ -1,3 +1,5 @@
+import {data} from "autoprefixer";
+
 export class Sheets
 {
     constructor() {
@@ -11,6 +13,7 @@ export class Sheets
         this.searchExercises();
         this.handleShowExerciseList();
         this.handleHideExerciseList();
+        this.handleNewExerciseItem();
     }
 
     handleShowExerciseList() {
@@ -78,6 +81,8 @@ export class Sheets
         if (search) {
             search.addEventListener('keyup', () => {
                 this.showExerciseList(search);
+                search.removeAttribute('data-id');
+
                 exercises.forEach((exercise) => {
                     let searchValue = search.value.toUpperCase();
                     let exerciseName = exercise.innerText.toUpperCase();
@@ -92,5 +97,81 @@ export class Sheets
                 });
             })
         }
+    }
+
+    handleNewExerciseItem() {
+        const button = document.querySelector("#add-exercise-button");
+        const search = document.querySelector("#search-exercise");
+        const list = document.querySelector("#exercises-selected > ul");
+
+        if (button && list) {
+            button.addEventListener("click", () => {
+
+                if (search.value && !this.exerciseAlreadyExists(search)) {
+                    let item = this.createExerciseItem(search.value, search.getAttribute('data-id'));
+                    list.appendChild(item);
+                }
+            });
+        }
+    }
+
+    createExerciseItem(itemName, id) {
+        const li = document.createElement('li');
+        li.classList.add('gymm-exercise-added-list');
+        li.setAttribute('data-id', id || 'new');
+
+
+        const div = document.createElement('div');
+        div.classList.add('flex', 'flex-row', 'items-center')
+        li.appendChild(div);
+
+        const name = document.createElement('span');
+        name.classList.add('text-[#fc612e]');
+        name.innerText = itemName;
+        div.appendChild(name);
+
+        if (!id) {
+            const notify = document.createElement('span');
+            notify.innerText = '(new exercise)';
+            notify.classList.add('text-black', 'text-xs', 'pl-[3px]');
+            div.appendChild(notify);
+        }
+
+        const button = document.createElement('span');
+        button.classList.add('gymm-exercise-added-trash', 'exercise-list-item');
+        li.appendChild(button);
+        this.removeExerciseItem(button, li);
+
+        const img = document.createElement('img');
+        img.setAttribute('src', '/images/icons/trash-can-regular.svg');
+        button.appendChild(img);
+
+        return li;
+    }
+
+    removeExerciseItem(button, li) {
+        if (button && li) {
+            button.addEventListener('click', () => {
+                li.remove();
+            });
+        }
+    }
+
+    exerciseAlreadyExists(search) {
+        if (!search) {
+            return true;
+        }
+
+        let exists = false;
+        const exercises = document.querySelectorAll('.gymm-exercise-added-list');
+
+        exercises.forEach((exercise) => {
+            let exerciseid = exercise.getAttribute('data-id');
+            if (exerciseid === search.getAttribute('data-id') && exerciseid !== null) {
+                exists = true;
+            }
+        });
+
+        return exists
     }
 }
