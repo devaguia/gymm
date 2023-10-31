@@ -1,4 +1,5 @@
 import {data} from "autoprefixer";
+import {type} from "imask";
 
 export class Sheets
 {
@@ -110,6 +111,8 @@ export class Sheets
                 if (search.value && !this.exerciseAlreadyExists(search)) {
                     let item = this.createExerciseItem(search.value, search.getAttribute('data-id'));
                     list.appendChild(item);
+
+                    this.updateHiddenData();
                 }
             });
         }
@@ -118,7 +121,7 @@ export class Sheets
     createExerciseItem(itemName, id) {
         const li = document.createElement('li');
         li.classList.add('gymm-exercise-added-list');
-        li.setAttribute('data-id', id || 'new');
+        li.setAttribute('data-id', id || 0);
 
 
         const div = document.createElement('div');
@@ -140,7 +143,7 @@ export class Sheets
         const button = document.createElement('span');
         button.classList.add('gymm-exercise-added-trash', 'exercise-list-item');
         li.appendChild(button);
-        this.removeExerciseItem(button, li);
+        this.removeExerciseItem(button, li, {id: id || 0, name: itemName});
 
         const img = document.createElement('img');
         img.setAttribute('src', '/images/icons/trash-can-regular.svg');
@@ -149,10 +152,11 @@ export class Sheets
         return li;
     }
 
-    removeExerciseItem(button, li) {
+    removeExerciseItem(button, li, exercise) {
         if (button && li) {
             button.addEventListener('click', () => {
                 li.remove();
+                this.updateHiddenData();
             });
         }
     }
@@ -173,5 +177,17 @@ export class Sheets
         });
 
         return exists
+    }
+
+    updateHiddenData() {
+        const hidden = document.querySelector("#exercise-list-object");
+        const exercisesList = document.querySelectorAll(".gymm-exercise-added-list");
+
+        var exercises = [];
+        exercisesList.forEach((item) => {
+            exercises.push({name: item.innerText, id: item.getAttribute('data-id')});
+        });
+
+        hidden.value = JSON.stringify(exercises);
     }
 }
