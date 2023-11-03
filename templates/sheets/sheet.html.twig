@@ -1,0 +1,73 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}New Sheet{% endblock %}
+
+{% block body %}
+    <div class="mt-6">
+        <div>
+            <h2 class="font-bold text-2xl">Sheet View</h2>
+        </div>
+        <hr class="w-full my-4">
+        <div class="py-4">
+            <div>
+                <input class="gymm-txt selection:bg-transparent" name="name" id="name" disabled placeholder="Sheet name" aria-label="name" value="Monday Exercises">
+            </div>
+        </div>
+        <div class="py-4">
+            <label class="font-bold">Sheet exercises</label>
+            <div id="exercises-selected" class="w-full">
+                <ul class="px-2 mt-6 flex flex-col gap-2">
+                    <li class="gymm-exercise-added-list">
+                        <a class="block text-black w-full md:flex md:flex-row justify-between" href="#">
+                            <div class="flex flex-row justify-between">
+                                <label>Name:</label>
+                                <span class="pl-2 text-[#fc612e]">Supino Reto</span>
+                            </div>
+                            <div class="flex flex-row justify-between">
+                                <label>Series:</label>
+                                <span class="pl-2 text-[#fc612e]">3</span>
+                            </div>
+                            <div class="flex flex-row justify-between">
+                                <label>Repetitions:</label>
+                                <span class="pl-2 text-[#fc612e]">12</span>
+                            </div>
+                            <div class="flex flex-row justify-between">
+                                <label>Weight:</label>
+                                <span class="pl-2 text-[#fc612e]">12</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="gymm-exercise-added-list">
+                        <a class="block text-black w-full md:flex md:flex-row justify-between" href="#">
+                            <div class="flex flex-row justify-between">
+                                <label>Name:</label>
+                                <span class="pl-2 text-[#fc612e]">Supino Reto</span>
+                            </div>
+                            <div class="flex flex-row justify-between">
+                                <label>Series:</label>
+                                <span class="pl-2 text-[#fc612e]">3</span>
+                            </div>
+                            <div class="flex flex-row justify-between">
+                                <label>Repetitions:</label>
+                                <span class="pl-2 text-[#fc612e]">12</span>
+                            </div>
+                            <div class="flex flex-row justify-between">
+                                <label>Weight:</label>
+                                <span class="pl-2 text-[#fc612e]">12</span>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <input type="hidden" name="exercise-list-object" id="exercise-list-object">
+        </div>
+        <div class="py-4">
+            <div>
+                <textarea class="gymm-textarea selection:bg-transparent" name="description" id=description" placeholder="Sheet Description" aria-label="description" disabled>Description of this sheet.</textarea>
+            </div>
+        </div>
+        <div class="float-right w-full flex justify-end">
+            <a class="gymm-btn-primary md:w-40" href="{{ path('app_edit_sheets') }}">Edit</a>
+        </div>
+    </div>
+{% endblock %}
