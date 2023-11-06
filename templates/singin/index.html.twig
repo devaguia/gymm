@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sing in{% endblock %}
+
+{% block body %}
+    <section class="bg-gray-100 min-h-screen flex items-center justify-center">
+        <div class="bg-white flex flex-row gap-4 rounded-2xl shadow-2xl max-w-3xl p-5">
+            <div class="sm:w-1/2 px-8 py-4 sm:pt-16">
+                <h2 class="font-bold text-2xl text-[#fc612e] flex">
+                    Login on <span class="px-2 text-black">Gymm</span>
+                    <svg class="w-7" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M48 256h416"/><rect x="384" y="128" width="32" height="256" rx="16" ry="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><rect x="96" y="128" width="32" height="256" rx="16" ry="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><rect x="32" y="192" width="16" height="128" rx="8" ry="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><rect x="464" y="192" width="16" height="128" rx="8" ry="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></svg>
+                </h2>
+                <p class="text-sm mt-4 text-[#fc612e]">If you already a member, log in!</p>
+
+                <form class="flex flex-col gap-4 mt-8">
+                    <input type="email" class="gymm-txt" name="email" placeholder="Email">
+                    <div class="relative">
+                        <input type="password" class="gymm-txt pr-10" name="password" id="singin-password" placeholder="Password">
+                        <div id="singin-eye-password" class="hover:cursor-pointer">
+                            <svg fill="gray" class="absolute w-5 top-0 right-3 translate-y-1/2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M255.66 112c-77.94 0-157.89 45.11-220.83 135.33a16 16 0 00-.27 17.77C82.92 340.8 161.8 400 255.66 400c92.84 0 173.34-59.38 221.79-135.25a16.14 16.14 0 000-17.47C428.89 172.28 347.8 112 255.66 112z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><circle cx="256" cy="256" r="80" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/></svg>
+                        </div>
+                    </div>
+                    <div class="mt-5">
+                        <button class="gymm-btn-primary">Login</button>
+                    </div>
+                </form>
+
+                <div class="mt-6 grid grid-cols-3 items-center text-gray-500">
+                    <hr class="text-gray-50">
+                    <p class="text-center text-sm">OR</p>
+                    <hr class="text-gray-50">
+                </div>
+
+                <div class="pt-6 w-full">
+                    <a href="{{ path('app_singup') }}" class="gymm-btn-secondary">Register</a>
+                </div>
+            </div>
+            <div class="sm:block hidden w-1/2">
+                <img class="rounded-2xl" src="{{ asset('images/bg-singin.jpg') }}" alt="">
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}New Sheet{% endblock %}
+
+{% block body %}
+    <form class="mt-6">
+        <div>
+            <h2 class="font-bold text-2xl">New Sheet</h2>
+        </div>
+        <hr class="w-full my-4">
+        <div class="py-4">
+            <div>
+                <input class="gymm-txt" name="name" id="name" placeholder="Sheet name" aria-label="name">
+            </div>
+        </div>
+        <div class="py-4">
+            <label class="font-bold">Sheet exercises</label>
+            <div class="flex flex-row gap-4 mt-2">
+                <div class="w-full relative">
+                    <input class="gymm-txt hover:cursor-pointer" type="text" id="search-exercise" placeholder="New exercise" aria-label="exercises" autocomplete="off">
+                    <div class="hidden" id="exercise-list">
+                        <ul class="px-2 py-2 bg-gray-50 rounded-b-m shadow-lg border border-gray-100 absolute w-full">
+                            <li class="pl-2 my-1 py-1 rounded-sm hover:bg-gray-200 hover:cursor-pointer exercise-item" data-id="1">Teste</li>
+                            <li class="pl-2 my-1 py-1 rounded-sm hover:bg-gray-200 hover:cursor-pointer exercise-item" data-id="2">Balela</li>
+                            <li class="pl-2 my-1 py-1 rounded-sm hover:bg-gray-200 hover:cursor-pointer exercise-item" data-id="3">Supino Reto</li>
+                        </ul>
+                    </div>
+                </div>
+                <span id="add-exercise-button" class="bg-[#fc612e] shadow-md hover:bg-[#FD7A45] hover:cursor-pointer block rounded-lg h-10 text-white py-2 px-4 font-bold text-center">+</span>
+            </div>
+            <div id="exercises-selected" class="w-full">
+                <ul class="px-2 mt-6 flex flex-col gap-2"></ul>
+            </div>
+            <input type="hidden" name="exercise-list-object" id="exercise-list-object">
+        </div>
+        <div class="py-4">
+            <div>
+                <textarea class="gymm-textarea" name="description" id=description" placeholder="Sheet Description" aria-label="description"></textarea>
+            </div>
+        </div>
+        <div class="float-right w-full flex justify-end">
+            <button class="gymm-btn-primary md:w-40">Save</button>
+        </div>
+    </form>
+{% endblock %}

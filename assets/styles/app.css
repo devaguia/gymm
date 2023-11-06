@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+}
+
+.gymm-btn-primary {
+    @apply shadow-lg block rounded-lg text-center bg-[#fc612e] hover:bg-[#FD7A45] text-white w-full py-2 px-4 selection:bg-transparent;
+}
+
+.gymm-btn-secondary {
+    @apply shadow-lg block rounded-lg text-center bg-black hover:bg-gray-700 text-white w-full py-2 px-4 selection:bg-transparent;
+}
+
+.gymm-txt {
+    @apply w-full h-10 rounded-md outline-0 pl-4 shadow-md border border-gray-100 bg-white;
+}
+
+.gymm-textarea {
+    @apply w-full h-32 rounded-md outline-0 resize-none pl-4 pt-2 shadow-md border border-gray-100 bg-white;
+}
+
+.gymm-mobile-menu {
+    @apply hidden w-auto;
+}
+
+.gymm-mobile-menu-active {
+    @apply block md:hidden w-auto;
+}
+
+.gymm-exercise-added-list {
+    @apply flex flex-row px-8 py-2 rounded-md bg-gray-100 justify-between;
+}
+
+.gymm-exercise-added-trash {
+    @apply w-[16px] transition-all duration-200 filter hover:opacity-50 flex items-center hover:cursor-pointer;
+}
+
+.gymm-alert {
+    @apply px-4 py-2 bg-[#ffece6] flex flex-row justify-between rounded-md mt-2
+}
