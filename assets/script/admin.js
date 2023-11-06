@@ -7,7 +7,8 @@ export class Admin
     }
 
     callEvents() {
-        this.openHeaderMenu()
+        this.openHeaderMenu();
+        this.removeNotificationMessage();
     }
 
     openHeaderMenu() {
@@ -19,5 +20,15 @@ export class Admin
                 mobileHeader.classList.toggle('gymm-mobile-menu-active');
             })
         }
+    }
+
+    removeNotificationMessage() {
+        const notifications = document.querySelectorAll('.gymm-message-remove');
+
+        notifications.forEach((notification) => {
+            notification.addEventListener('click', () => {
+                notification.parentNode.remove();
+            })
+        })
     }
 }

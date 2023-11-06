@@ -41,3 +41,7 @@
 .gymm-exercise-added-trash {
     @apply w-[16px] transition-all duration-200 filter hover:opacity-50 flex items-center hover:cursor-pointer;
 }
+
+.gymm-alert {
+    @apply px-4 py-2 bg-[#ffece6] flex flex-row justify-between rounded-md mt-2
+}

@@ -13,11 +13,10 @@ export class Exercises
     }
 
     setWeightMask() {
-        const height = document.querySelector('#exercise-weight');
+        const weight = document.querySelector('#exercise_weight');
+        if(!weight) return;
 
-        if(!height) return;
-
-        this.setDecimalMask(height);
+        this.setDecimalMask(weight);
     }
 
     setDecimalMask(field) {

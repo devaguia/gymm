@@ -1,40 +1,77 @@
 {% extends 'admin.html.twig' %}
 
-{% block title %}New Exercise{% endblock %}
+{% block title %}{{ exercise is defined ? 'Edit' : 'New' }} Exercise{% endblock %}
 
 {% block body %}
-    <form class="mt-6">
+    {{ form_start(exerciseForm, { 'attr': {'class': 'mt-6'}}) }}
         <div>
-            <h2 class="font-bold text-2xl">New Exercise</h2>
+            <h2 class="font-bold text-2xl">{{ exercise is defined ? 'Edit' : 'New' }} Exercise</h2>
         </div>
         <hr class="w-full my-4">
         <div class="mt-2 py-4">
             <div>
-                <label>Exercise name</label>
-                <input class="gymm-txt" name="name" id="name" placeholder="Exercise name" aria-label="name">
+                {{ form_row(exerciseForm.name,{
+                    'attr': {
+                        'class': 'gymm-txt',
+                        'id': 'name',
+                        'placeholder': 'Exercise name',
+                        'aria-label': 'name'
+                    }
+                }) }}
             </div>
         </div>
         <div class="flex flex-col md:flex-row gap-4">
             <div class="md:w-1/3">
-                <label>Series</label>
-                <input class="gymm-txt" type="number" min="0" name="series" id="series" placeholder="0" aria-label="name">
+                {{ form_row(exerciseForm.series, {
+                    'attr': {
+                        'class': 'gymm-txt',
+                        'id': 'series',
+                        'aria-label': 'series',
+                        'placeholder': '0',
+                        'min': '0',
+                        'type': 'number'
+                    }
+                }) }}
             </div>
             <div class="md:w-1/3">
-                <label>Repetitions</label>
-                <input class="gymm-txt" type="number" min="0" name="repetitions" id="repetitions" placeholder="0" aria-label="name">
+                {{ form_row(exerciseForm.repetitions, {
+                    'attr': {
+                        'class': 'gymm-txt',
+                        'id': 'repetitions',
+                        'aria-label': 'repetitions',
+                        'placeholder': '0',
+                        'min': '0',
+                        'type': 'number'
+                    }
+                }) }}
             </div>
             <div class="md:w-1/3">
-                <label>Weight</label>
-                <input class="gymm-txt" type="text" name="weight" id="exercise-weight" placeholder="0.0" aria-label="name">
+                {{ form_row(exerciseForm.weight, {
+                    'attr': {
+                        'class': 'gymm-txt',
+                        'id': 'exercise_weight',
+                        'aria-label': 'weight',
+                        'placeholder': '0.0',
+                        'min': '0',
+                    }
+                }) }}
             </div>
         </div>
         <div class="py-4">
             <div>
-                <textarea class="gymm-textarea" name="description" id=description" placeholder="Sheet Description" aria-label="description"></textarea>
+                {{ form_row(exerciseForm.description, {
+                    'attr': {
+                        'class': 'gymm-textarea',
+                        'id': 'description',
+                        'aria-label': 'description',
+                        'placeholder': 'Short Description',
+                        'min': '0',
+                    }
+                }) }}
             </div>
         </div>
         <div class="mt-8 float-right w-full flex justify-end">
             <button class="gymm-btn-primary md:w-40">Save</button>
         </div>
-    </form>
+    {{ form_end(exerciseForm) }}
 {% endblock %}
