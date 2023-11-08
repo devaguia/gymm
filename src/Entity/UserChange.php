@@ -2,10 +2,10 @@
 
 namespace App\Entity;
 
-use App\Repository\UserChangeRepository;
+use App\Repository\UserChangesRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: UserChangeRepository::class)]
+#[ORM\Entity(repositoryClass: UserChangesRepository::class)]
 class UserChange
 {
     #[ORM\Id]

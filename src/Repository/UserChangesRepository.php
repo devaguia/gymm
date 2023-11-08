@@ -14,7 +14,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method UserChange[]    findAll()
  * @method UserChange[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class UserChangeRepository extends ServiceEntityRepository
+class UserChangesRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
