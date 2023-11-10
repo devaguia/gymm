@@ -16,7 +16,7 @@
         {% for sheet in sheetList %}
             <div class="mt-4">
                 <div class="shadow-lg rounded-lg w-full py-2 px-4 border border-gray-100 grid grid-cols-[1fr_65px] text-sm">
-                    <a href="{{ path('app_view_sheets') }}"  class="grid grid-cols-2 selection:bg-transparent">
+                    <a href="{{ path('app_view_sheet', { sheet: sheet.id }) }}"  class="grid grid-cols-2 selection:bg-transparent">
                         <span class="w-full">{{ sheet.name }}</span>
                         <span class="hidden md:block md:w-1/2">0 Exercises</span>
                     </a>

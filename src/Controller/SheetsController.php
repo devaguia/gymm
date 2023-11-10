@@ -30,10 +30,10 @@ class SheetsController extends AbstractController
         ]);
     }
 
-    #[Route('/sheets/view', name: 'app_view_sheets', methods: ['GET'])]
-    public function viewSheets(): Response
+    #[Route('/sheets/view/{sheet}', name: 'app_view_sheet', methods: ['GET'])]
+    public function viewSheets(Sheet $sheet): Response
     {
-        return $this->render('sheets/sheet.html.twig', []);
+        return $this->render('sheets/sheet.html.twig', ['sheet' => $sheet]);
     }
     #[Route('/sheets/new', name: 'app_add_sheets', methods: ['GET'])]
     public function addSheetForm(): Response
