@@ -1,16 +1,23 @@
 {% extends 'admin.html.twig' %}
 
-{% block title %}New Sheet{% endblock %}
+{% block title %}{{ sheet is defined ? 'Edit' : 'New' }} Sheet{% endblock %}
 
 {% block body %}
-    <form class="mt-6">
+    {{ form_start(sheetForm, { 'attr': {'class': 'mt-6'}}) }}
         <div>
-            <h2 class="font-bold text-2xl">New Sheet</h2>
+            <h2 class="font-bold text-2xl">{{ sheet is defined ? 'Edit' : 'New' }} Sheet</h2>
         </div>
         <hr class="w-full my-4">
         <div class="py-4">
             <div>
-                <input class="gymm-txt" name="name" id="name" placeholder="Sheet name" aria-label="name">
+                {{ form_row(sheetForm.name,{
+                    'attr': {
+                        'class': 'gymm-txt mt-2',
+                        'id': 'name',
+                        'placeholder': 'Sheet name',
+                        'aria-label': 'name'
+                    }
+                }) }}
             </div>
         </div>
         <div class="py-4">
@@ -35,11 +42,19 @@
         </div>
         <div class="py-4">
             <div>
-                <textarea class="gymm-textarea" name="description" id=description" placeholder="Sheet Description" aria-label="description"></textarea>
+                {{ form_row(sheetForm.description, {
+                    'attr': {
+                        'class': 'gymm-textarea mt-2',
+                        'id': 'description',
+                        'aria-label': 'description',
+                        'placeholder': 'Sheet Description',
+                        'min': '0',
+                    }
+                }) }}
             </div>
         </div>
         <div class="float-right w-full flex justify-end">
             <button class="gymm-btn-primary md:w-40">Save</button>
         </div>
-    </form>
+    {{ form_end(sheetForm) }}
 {% endblock %}
