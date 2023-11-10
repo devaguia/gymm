@@ -26,7 +26,7 @@ class SheetsController extends AbstractController
         $sheetList = $this->sheetsRepository->findAll();
 
         return $this->render('sheets/index.html.twig', [
-            'sheetList ' => $sheetList
+            'sheetList' => $sheetList
         ]);
     }
 
