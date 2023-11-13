@@ -5,6 +5,8 @@ namespace App\Form;
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -14,17 +16,18 @@ class SingupType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name')
-            ->add('lastname')
-            ->add('mail')
-            ->add('password', PasswordType::class)
+            ->add('name', options: ['label' => false])
+            ->add('lastname', options: ['label' => false])
+            ->add('mail', EmailType::class, options: ['label' => false])
+            ->add('password', PasswordType::class, options: ['label' => false])
             ->add('gender', ChoiceType::class, options: [
                 'choices' => [
-                    0 => 'Male',
-                    1 => 'Female'
-                ]
+                    'Male' => 0,
+                    'Female' => 1
+                ],
+                'label' => false
             ])
-            ->add('age')
+            ->add('age', NumberType::class, options: ['label' => false])
         ;
     }
 
