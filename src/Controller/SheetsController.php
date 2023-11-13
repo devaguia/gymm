@@ -50,7 +50,7 @@ class SheetsController extends AbstractController
             ->handleRequest($request);
 
         if (!$sheetForm->isValid()) {
-            return $this->render('series/form.html.twig', compact('sheetForm'));
+            return $this->render('sheets/form.html.twig', compact('sheetForm'));
         }
 
         $this->sheetsRepository->add($sheet, true);
