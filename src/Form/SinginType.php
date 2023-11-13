@@ -13,8 +13,8 @@ class SinginType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('mail')
-            ->add('password', PasswordType::class)
+            ->add('mail', options: ['label' => false])
+            ->add('password', PasswordType::class, options: ['label' => false])
         ;
     }
 
