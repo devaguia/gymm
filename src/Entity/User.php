@@ -35,11 +35,16 @@ class User
     #[ORM\Column(length: 255)]
     private ?string $profile_picture = null;
 
-    #[ORM\Column]
-    private ?\DateTimeImmutable $update_at = null;
+    #[ORM\Column(name: 'updated_at', nullable: true)]
+    private ?\DateTime $updated_at = null;
 
-    #[ORM\Column]
-    private ?\DateTimeImmutable $create_at = null;
+    #[ORM\Column(name: 'created_at', nullable: true)]
+    private ?\DateTime $created_at = null;
+
+    public function __construct()
+    {
+        $this->updatedTimestamps();
+    }
 
     public function getId(): ?int
     {
@@ -130,14 +135,38 @@ class User
         return $this;
     }
 
-    public function getUpdateAt(): ?\DateTimeImmutable
+    public function getUpdatedAt(): ?\DateTime
     {
-        return $this->update_at;
+        return $this->updated_at;
     }
 
-    public function getCreateAt(): ?\DateTimeImmutable
+    public function setUpdatedAt(\DateTime $updatedAt): static
     {
-        return $this->create_at;
+        $this->updated_at = $updatedAt;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTime
+    {
+        return $this->created_at;
+    }
+
+    public function setCreatedAt(\DateTime $createdAt): static
+    {
+        $this->created_at = $createdAt;
+
+        return $this;
+    }
+
+    #[ORM\PrePersist]
+    #[ORM\PreUpdate]
+    public function updatedTimestamps(): void
+    {
+        $this->setUpdatedAt(new \DateTime('now'));
+        if ($this->getCreatedAt() === null) {
+            $this->setCreatedAt(new \DateTime('now'));
+        }
     }
 
 }

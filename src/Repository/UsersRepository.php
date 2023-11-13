@@ -21,6 +21,31 @@ class UsersRepository extends ServiceEntityRepository
         parent::__construct($registry, User::class);
     }
 
+    public function add(User $entity, bool $flush = false): void
+    {
+        $this->getEntityManager()->persist($entity);
+
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
+
+    public function remove(User $entity, bool $flush = false): void
+    {
+        $this->getEntityManager()->remove($entity);
+
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
+
+    public function removeById(int $id): void
+    {
+        $exercise = $this->getEntityManager()->getPartialReference(User::class, $id);
+        if ($exercise) {
+            $this->remove($exercise, true);
+        }
+    }
 //    /**
 //     * @return User[] Returns an array of User objects
 //     */
