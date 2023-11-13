@@ -16,9 +16,14 @@ class User
 
     #[ORM\Column(length: 255)]
     private ?string $name = null;
+    #[ORM\Column(length: 255)]
+    private ?string $lastname = null;
 
     #[ORM\Column(length: 255)]
     private ?string $mail = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $password = null;
 
     #[ORM\Column(nullable: true)]
     private ?float $weight = null;
@@ -133,6 +138,26 @@ class User
         $this->profile_picture = $profile_picture;
 
         return $this;
+    }
+
+    public function getPassword(): ?string
+    {
+        return $this->password;
+    }
+
+    public function setPassword(?string $password): void
+    {
+        $this->password = $password;
+    }
+
+    public function getLastname(): ?string
+    {
+        return $this->lastname;
+    }
+
+    public function setLastname(?string $lastname): void
+    {
+        $this->lastname = $lastname;
     }
 
     public function getUpdatedAt(): ?\DateTime
