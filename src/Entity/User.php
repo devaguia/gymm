@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\UsersRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use function PHPUnit\Framework\isInstanceOf;
 
 #[ORM\Entity(repositoryClass: UsersRepository::class)]
 class User
@@ -35,9 +36,9 @@ class User
     private ?bool $gender = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $age = null;
+    private ?\DateTime $age = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $profile_picture = null;
 
     #[ORM\Column(name: 'updated_at', nullable: true)]
@@ -116,14 +117,18 @@ class User
         return $this;
     }
 
-    public function getAge(): ?\DateTimeInterface
+    public function getAge(): ?\DateTime
     {
         return $this->age;
     }
 
-    public function setAge(\DateTimeInterface $age): static
+    public function setAge($age): static
     {
-        $this->age = $age;
+        if (isInstanceOf(\DateTime::class, $age)) {
+            $this->age = $age;
+        } else {
+            $this->age = new \DateTime($age);
+        }
 
         return $this;
     }

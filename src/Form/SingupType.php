@@ -5,6 +5,8 @@ namespace App\Form;
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -27,7 +29,12 @@ class SingupType extends AbstractType
                 ],
                 'label' => false
             ])
-            ->add('age', NumberType::class, options: ['label' => false])
+            ->add('age', DateType::class, options: [
+                'label' => false,
+                'widget' => 'single_text',
+                'html5' => false,
+                'format' => 'd/m/Y'
+            ])
         ;
     }
 
