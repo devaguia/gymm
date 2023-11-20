@@ -2,10 +2,10 @@
 
 namespace App\Entity;
 
-use App\Repository\SheetRepository;
+use App\Repository\SheetsRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: SheetRepository::class)]
+#[ORM\Entity(repositoryClass: SheetsRepository::class)]
 class Sheet
 {
     #[ORM\Id]
@@ -13,36 +13,26 @@ class Sheet
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
-    private ?int $user_id = null;
-
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(type: 'text', nullable: true)]
     private ?string $description = null;
 
-    #[ORM\Column]
-    private ?\DateTimeImmutable $update_at = null;
+    #[ORM\Column(name: 'updated_at', nullable: true)]
+    private ?\DateTime $updatedAt = null;
 
-    #[ORM\Column]
-    private ?\DateTimeImmutable $create_at = null;
+    #[ORM\Column(name: 'created_at', nullable: true)]
+    private ?\DateTime $createdAt = null;
+
+    public function __construct()
+    {
+        $this->updatedTimestamps();
+    }
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getUserId(): ?int
-    {
-        return $this->user_id;
-    }
-
-    public function setUserId(int $user_id): static
-    {
-        $this->user_id = $user_id;
-
-        return $this;
     }
 
     public function getName(): ?string
@@ -69,13 +59,37 @@ class Sheet
         return $this;
     }
 
-    public function getUpdateAt(): ?\DateTimeImmutable
+    public function getUpdatedAt(): ?\DateTime
     {
-        return $this->update_at;
+        return $this->updatedAt;
     }
 
-    public function getCreateAt(): ?\DateTimeImmutable
+    public function setUpdatedAt(\DateTime $updatedAt): static
     {
-        return $this->create_at;
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTime
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTime $createdAt): static
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    #[ORM\PrePersist]
+    #[ORM\PreUpdate]
+    public function updatedTimestamps(): void
+    {
+        $this->setUpdatedAt(new \DateTime('now'));
+        if ($this->getCreatedAt() === null) {
+            $this->setCreatedAt(new \DateTime('now'));
+        }
     }
 }

@@ -1,3 +1,5 @@
+import IMask from "imask";
+
 export class Singup
 {
     constructor() {
@@ -8,10 +10,12 @@ export class Singup
 
     callEvents() {
         this.showPassword();
+        this.SetBirthdateMask();
     }
+
     showPassword() {
         const eye = document.querySelector('#singup-eye-password');
-        const password = document.querySelector('#singup-password');
+        const password = document.querySelector('#singup_password');
 
         if (eye && password) {
             eye.addEventListener('click', () => {
@@ -19,5 +23,14 @@ export class Singup
                 password.setAttribute('type', type);
             });
         }
+    }
+
+    SetBirthdateMask() {
+        IMask(
+            document.getElementById('singup_age'),
+            {
+                mask: '00/00/0000'
+            }
+        )
     }
 }

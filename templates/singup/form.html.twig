@@ -15,26 +15,58 @@
                 </h2>
                 <p class="text-sm text-[#fc612e]">Create your account!</p>
 
-                <form class="flex flex-col gap-4 mt-4">
-                    <input type="name" class="gymm-txt" name="name" placeholder="Name">
-                    <input type="last_name" class="gymm-txt" name="firstname" placeholder="Last name">
+                {{ form_start(singUpForm, { 'attr': {'class': 'flex flex-col gap-4 mt-4'}}) }}
+                    {{ form_row(singUpForm.name,{
+                        'attr': {
+                            'class': 'gymm-txt',
+                            'placeholder': 'Name',
+                            'aria-label': 'name'
+                        }
+                    }) }}
+                    {{ form_row(singUpForm.lastname,{
+                        'attr': {
+                            'class': 'gymm-txt',
+                            'placeholder': 'Last name',
+                            'aria-label': 'lastname'
+                        }
+                    }) }}
                     <div class="flex flex-row gap-4">
                         <div class="w-1/2">
-                            <select class="gymm-txt text-gray-500">
-                                <option value="0">Gender</option>
-                                <option value="m">Male</option>
-                                <option value="f">Female</option>
-                            </select>
+                            {{ form_row(singUpForm.gender,{
+                                'attr': {
+                                    'class': 'gymm-txt text-gray-500',
+                                    'aria-label': 'gender'
+                                }
+                            }) }}
                         </div>
                         <div class="w-1/2">
-                            <input type="number" min="0" max="90" class="gymm-txt" name="age" placeholder="Age">
+                            {{ form_row(singUpForm.age,{
+                                'attr': {
+                                    'class': 'gymm-txt',
+                                    'placeholder': 'Age',
+                                    'aria-label': 'age',
+                                }
+                            }) }}
                         </div>
                     </div>
-                    <div class="flex w-full">
-                        <input type="email" class="gymm-txt" name="email" placeholder="Email">
+                    <div>
+                        {{ form_row(singUpForm.mail,{
+                            'attr': {
+                                'class': 'gymm-txt',
+                                'placeholder': 'Email',
+                                'aria-label': 'mail'
+                            }
+                        }) }}
                     </div>
                     <div class="relative">
-                        <input type="password" class="gymm-txt" name="password" id="singup-password" placeholder="Password">
+                        {{ form_row(singUpForm.password,{
+                            'attr': {
+                                'class': 'gymm-txt',
+                                'placeholder': 'Password',
+                                'id': 'singup-password',
+                                'aria-label': 'Password'
+                            }
+                        }) }}
                         <div id="singup-eye-password" class="hover:cursor-pointer">
                             <svg fill="gray" class="absolute w-5 top-0 right-3 translate-y-1/2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M255.66 112c-77.94 0-157.89 45.11-220.83 135.33a16 16 0 00-.27 17.77C82.92 340.8 161.8 400 255.66 400c92.84 0 173.34-59.38 221.79-135.25a16.14 16.14 0 000-17.47C428.89 172.28 347.8 112 255.66 112z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><circle cx="256" cy="256" r="80" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/></svg>
                         </div>
@@ -42,7 +74,7 @@
                     <div class="mt-5">
                         <button class="gymm-btn-primary">Register</button>
                     </div>
-                </form>
+                {{ form_end(singUpForm) }}
 
                 <div class="mt-6 grid grid-cols-3 items-center text-gray-500">
                     <hr class="text-gray-50">

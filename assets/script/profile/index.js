@@ -9,10 +9,12 @@ export class Profile
 
     callEvents() {
         this.setWeightMask();
+        this.setHeightMask();
+        this.setBirthdateMask();
     }
 
     setWeightMask() {
-        const weight = document.querySelector('#profile-weight');
+        const weight = document.querySelector('#profile_weight');
 
         if(!weight) return;
 
@@ -20,11 +22,24 @@ export class Profile
     }
 
     setHeightMask() {
-        const height = document.querySelector('#profile-height');
+        const height = document.querySelector('#profile_height');
 
         if(!height) return;
 
         this.setDecimalMask(height);
+    }
+
+    setBirthdateMask() {
+        const age = document.querySelector('#profile_age');
+
+        if(!age) return;
+
+        IMask(
+            age,
+            {
+                mask: '00/00/0000'
+            }
+        )
     }
 
     setDecimalMask(field) {
