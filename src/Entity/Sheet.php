@@ -25,6 +25,10 @@ class Sheet
     #[ORM\Column(name: 'created_at', nullable: true)]
     private ?\DateTime $createdAt = null;
 
+    #[ORM\ManyToOne(inversedBy: 'sheets')]
+    #[ORM\JoinColumn(name: 'user_id', nullable: true)]
+    private ?User $userId = null;
+
     public function __construct()
     {
         $this->updatedTimestamps();
@@ -91,5 +95,17 @@ class Sheet
         if ($this->getCreatedAt() === null) {
             $this->setCreatedAt(new \DateTime('now'));
         }
+    }
+
+    public function getUserId(): ?User
+    {
+        return $this->userId;
+    }
+
+    public function setUserId(?User $userId): static
+    {
+        $this->userId = $userId;
+
+        return $this;
     }
 }

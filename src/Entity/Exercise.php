@@ -34,6 +34,10 @@ class Exercise
     #[ORM\Column(name: 'created_at', nullable: true)]
     private ?\DateTime $createdAt = null;
 
+    #[ORM\ManyToOne(inversedBy: 'exercises')]
+    #[ORM\JoinColumn(name: 'user_id', nullable: true)]
+    private ?User $userId = null;
+
     public function __construct()
     {
         $this->updatedTimestamps();
@@ -136,5 +140,17 @@ class Exercise
         if ($this->getCreatedAt() === null) {
             $this->setCreatedAt(new \DateTime('now'));
         }
+    }
+
+    public function getUserId(): ?int
+    {
+        return $this->userId;
+    }
+
+    public function setUserId(int $userId): static
+    {
+        $this->userId = $userId;
+
+        return $this;
     }
 }

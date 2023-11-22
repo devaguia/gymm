@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UsersRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use function PHPUnit\Framework\isInstanceOf;
@@ -47,9 +49,17 @@ class User
     #[ORM\Column(name: 'created_at', nullable: true)]
     private ?\DateTime $created_at = null;
 
+    #[ORM\OneToMany(mappedBy: 'userId', targetEntity: Exercise::class)]
+    private Collection $exercises;
+
+    #[ORM\OneToMany(mappedBy: 'userId', targetEntity: Sheet::class, orphanRemoval: true)]
+    private Collection $sheets;
+
     public function __construct()
     {
         $this->updatedTimestamps();
+        $this->exercises = new ArrayCollection();
+        $this->sheets = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -197,6 +207,66 @@ class User
         if ($this->getCreatedAt() === null) {
             $this->setCreatedAt(new \DateTime('now'));
         }
+    }
+
+    /**
+     * @return Collection<int, Exercise>
+     */
+    public function getExercises(): Collection
+    {
+        return $this->exercises;
+    }
+
+    public function addExercise(Exercise $exercise): static
+    {
+        if (!$this->exercises->contains($exercise)) {
+            $this->exercises->add($exercise);
+            $exercise->setUserId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeExercise(Exercise $exercise): static
+    {
+        if ($this->exercises->removeElement($exercise)) {
+            // set the owning side to null (unless already changed)
+            if ($exercise->getUserId() === $this) {
+                $exercise->setUserId(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Sheet>
+     */
+    public function getSheets(): Collection
+    {
+        return $this->sheets;
+    }
+
+    public function addSheet(Sheet $sheet): static
+    {
+        if (!$this->sheets->contains($sheet)) {
+            $this->sheets->add($sheet);
+            $sheet->setUserId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSheet(Sheet $sheet): static
+    {
+        if ($this->sheets->removeElement($sheet)) {
+            // set the owning side to null (unless already changed)
+            if ($sheet->getUserId() === $this) {
+                $sheet->setUserId(null);
+            }
+        }
+
+        return $this;
     }
 
 }
