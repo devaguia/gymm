@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ExercisesRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ExercisesRepository::class)]
@@ -38,9 +40,13 @@ class Exercise
     #[ORM\JoinColumn(name: 'user_id', nullable: true)]
     private ?User $userId = null;
 
+    #[ORM\ManyToMany(targetEntity: Sheet::class, inversedBy: 'exercises')]
+    private Collection $sheets;
+
     public function __construct()
     {
         $this->updatedTimestamps();
+        $this->sheets = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -150,6 +156,30 @@ class Exercise
     public function setUserId(int $userId): static
     {
         $this->userId = $userId;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Sheet>
+     */
+    public function getSheets(): Collection
+    {
+        return $this->sheets;
+    }
+
+    public function addSheet(Sheet $sheet): static
+    {
+        if (!$this->sheets->contains($sheet)) {
+            $this->sheets->add($sheet);
+        }
+
+        return $this;
+    }
+
+    public function removeSheet(Sheet $sheet): static
+    {
+        $this->sheets->removeElement($sheet);
 
         return $this;
     }

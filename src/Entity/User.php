@@ -55,11 +55,15 @@ class User
     #[ORM\OneToMany(mappedBy: 'userId', targetEntity: Sheet::class, orphanRemoval: true)]
     private Collection $sheets;
 
+    #[ORM\OneToMany(mappedBy: 'UserId', targetEntity: UserChange::class)]
+    private Collection $userChanges;
+
     public function __construct()
     {
         $this->updatedTimestamps();
         $this->exercises = new ArrayCollection();
         $this->sheets = new ArrayCollection();
+        $this->userChanges = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -263,6 +267,36 @@ class User
             // set the owning side to null (unless already changed)
             if ($sheet->getUserId() === $this) {
                 $sheet->setUserId(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, UserChange>
+     */
+    public function getUserChanges(): Collection
+    {
+        return $this->userChanges;
+    }
+
+    public function addUserChange(UserChange $userChange): static
+    {
+        if (!$this->userChanges->contains($userChange)) {
+            $this->userChanges->add($userChange);
+            $userChange->setUserId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUserChange(UserChange $userChange): static
+    {
+        if ($this->userChanges->removeElement($userChange)) {
+            // set the owning side to null (unless already changed)
+            if ($userChange->getUserId() === $this) {
+                $userChange->setUserId(null);
             }
         }
 

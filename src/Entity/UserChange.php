@@ -23,7 +23,10 @@ class UserChange
     private ?float $height = null;
 
     #[ORM\Column]
-    private ?\DateTimeImmutable $create_at = null;
+    private ?\DateTime $create_at = null;
+
+    #[ORM\ManyToOne(inversedBy: 'userChanges')]
+    private ?User $UserId = null;
 
     public function getId(): ?int
     {
@@ -45,8 +48,15 @@ class UserChange
         return $this->height;
     }
 
-    public function getCreateAt(): ?\DateTimeImmutable
+    public function getCreateAt(): ?\DateTime
     {
         return $this->create_at;
+    }
+
+    public function setUserId(?User $UserId): static
+    {
+        $this->UserId = $UserId;
+
+        return $this;
     }
 }
