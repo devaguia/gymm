@@ -13,8 +13,8 @@ class UserChange
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
-    private ?int $user_id = null;
+    #[ORM\ManyToOne(inversedBy: 'userChanges')]
+    private ?User $user = null;
 
     #[ORM\Column]
     private ?float $weight = null;
@@ -25,17 +25,10 @@ class UserChange
     #[ORM\Column]
     private ?\DateTime $create_at = null;
 
-    #[ORM\ManyToOne(inversedBy: 'userChanges')]
-    private ?User $UserId = null;
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getUserId(): ?int
-    {
-        return $this->user_id;
     }
 
     public function getWeight(): ?float
@@ -53,9 +46,9 @@ class UserChange
         return $this->create_at;
     }
 
-    public function setUserId(?User $UserId): static
+    public function setUser(?User $user): static
     {
-        $this->UserId = $UserId;
+        $this->user = $user;
 
         return $this;
     }
